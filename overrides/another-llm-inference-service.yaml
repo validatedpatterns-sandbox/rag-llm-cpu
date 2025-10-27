@@ -1,0 +1,43 @@
+dsc:
+  initialize: false
+
+externalSecret:
+  create: false
+
+inferenceService:
+  name: hf-inference-service
+  minReplicas: 1
+  maxReplicas: 1
+  resources:
+    requests:
+      cpu: "8"
+      memory: 32Gi
+    limits:
+      cpu: "12"
+      memory: 32Gi
+
+servingRuntime:
+  name: hf-runtime
+  port: 8080
+  image: docker.io/kserve/huggingfaceserver:latest
+  modelFormat: huggingface
+  args:
+    - --model_dir
+    - /models
+    - --model_name
+    - /models/Mistral-7B-Instruct-v0.3
+    - --http_port
+    - "8080"
+
+model:
+  repository: mistralai/Mistral-7B-Instruct-v0.3
+  files:
+    - generation_config.json
+    - config.json
+    - model.safetensors.index.json
+    - model-00001-of-00003.safetensors
+    - model-00002-of-00003.safetensors
+    - model-00003-of-00003.safetensors
+    - tokenizer.model
+    - tokenizer.json
+    - tokenizer_config.json
