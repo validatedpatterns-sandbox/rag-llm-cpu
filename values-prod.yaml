@@ -2,7 +2,7 @@ clusterGroup:
   name: prod
 
   namespaces:
-    - rag-llm-no-gpu
+    - rag-llm-cpu
     - vault
     - golang-external-secrets
     - redhat-ods-operator:
@@ -38,7 +38,7 @@ clusterGroup:
 
     rag-llm-frontend:
       name: rag-llm-frontend
-      namespace: rag-llm-no-gpu
+      namespace: rag-llm-cpu
       repoURL: https://github.com/validatedpatterns-sandbox/rag-llm-demo-ui
       chartVersion: main
       path: helm
@@ -47,7 +47,7 @@ clusterGroup:
 
     vector-db:
       name: vector-db
-      namespace: rag-llm-no-gpu
+      namespace: rag-llm-cpu
       chart: vector-db
       chartVersion: 0.1.*
       extraValueFiles:
@@ -55,8 +55,6 @@ clusterGroup:
 
     llm-inference-service:
       name: llm-inference-service
-      namespace: rag-llm-no-gpu
+      namespace: rag-llm-cpu
       chart: llm-inference-service
       chartVersion: 0.2.*
-      extraValueFiles:
-        - $patternref/overrides/llm-inference-service-values.yaml
