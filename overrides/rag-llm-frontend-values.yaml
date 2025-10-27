@@ -15,10 +15,35 @@ dbProvidersSecret:
   vault:
     - key: mssql
       field: sapassword
+    - key: pgvector
+      field: user
+    - key: pgvector
+      field: password
+    - key: pgvector
+      field: db
+    - key: elastic
+      field: user
+    - key: elastic
+      field: password
   providers:
     - type: qdrant
       collection: docs
       url: http://qdrant-service:6333
+      embedding_model: sentence-transformers/all-mpnet-base-v2
+    - type: redis
+      index: docs
+      url: redis://redis-service:6379
+      embedding_model: sentence-transformers/all-mpnet-base-v2
+    - type: elastic
+      index: docs
+      url: http://elastic-service:9200
+      user: "{{ .elastic_user }}"
+      password: "{{ .elastic_password }}"
+      embedding_model: sentence-transformers/all-mpnet-base-v2
+    - type: pgvector
+      collection: docs
+      url: >-
+        postgresql+psycopg://{{ .pgvector_user }}:{{ .pgvector_password }}@pgvector-service:5432/{{ .pgvector_db }}
       embedding_model: sentence-transformers/all-mpnet-base-v2
     - type: mssql
       table: docs

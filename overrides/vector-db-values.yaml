@@ -1,6 +1,12 @@
 providers:
   qdrant:
     enabled: true
+  redis:
+    enabled: true
+  elastic:
+    enabled: true
+  pgvector:
+    enabled: true
   mssql:
     enabled: true
 
