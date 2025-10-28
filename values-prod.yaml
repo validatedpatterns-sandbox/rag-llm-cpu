@@ -57,4 +57,4 @@ clusterGroup:
       name: llm-inference-service
       namespace: rag-llm-cpu
       chart: llm-inference-service
-      chartVersion: 0.2.*
+      chartVersion: 0.3.*
