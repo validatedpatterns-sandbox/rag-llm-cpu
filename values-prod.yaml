@@ -56,5 +56,6 @@ clusterGroup:
     llm-inference-service:
       name: llm-inference-service
       namespace: rag-llm-cpu
-      chart: llm-inference-service
-      chartVersion: 0.3.*
+      repoURL: https://github.com/dminnear-rh/llm-inference-service-chart
+      chartVersion: nano-model
+      path: ./
