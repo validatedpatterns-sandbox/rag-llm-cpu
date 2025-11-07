@@ -5,4 +5,5 @@ main:
   clusterGroupName: prod
   multiSourceConfig:
     enabled: true
-    clusterGroupChartVersion: 0.9.*
+    clusterGroupGitRepoUrl: https://github.com/dminnear-rh/clustergroup-chart
+    clusterGroupChartGitRevision: pattern-delete
